@@ -1,26 +1,40 @@
+import lejos.nxt.LCD;
 import lejos.nxt.Motor;
 
+public class Steering {
 
-public class Steering implements Runnable{
+	Control control;
+	boolean suunta;
+	public void setobjects(Control c)
+	{
+		this.control=c;
+	}
 	
-	public void Dodge(){
-		Right();
-		Forward();
-		Left();
+	
+	
+	public void danceRight(){
+		Motor.C.setSpeed(500);
+		Motor.A.setSpeed(500);
 		
-	}
-	public void Right(){
-		Motor.C.rotate(-1500);
-		Motor.B.rotate(1500);
-	}
-	public void Forward(){
 		Motor.C.forward();
-		Motor.B.forward();
+		Motor.A.backward();
+
 	}
-	public void Left(){
-		Motor.C.rotate(1500);
-		Motor.B.rotate(-1500);
+	public void danceLeft(){
+
+		Motor.C.setSpeed(500);
+		Motor.A.setSpeed(500);
 		
+		Motor.C.backward();
+		Motor.A.forward();
+
 	}
+
+
+	
+	
+
+		
+	
 
 }
