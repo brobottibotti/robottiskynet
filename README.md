@@ -1,2 +1,0 @@
-# brobotti
-robot project
