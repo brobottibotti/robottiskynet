@@ -1,25 +1,31 @@
+import lejos.nxt.ColorSensor;
 import lejos.nxt.LCD;
 import lejos.nxt.Motor;
+import lejos.nxt.SensorPort;
 
 public class Control {
 
 	Time time;
 	Steering steering;
+	Colorsensor colorsensor;
 	String testi;
+	boolean stop=false;
 
-	public void setobjects(Time t, Steering s) {
+	public void setobjects(Time t, Steering s, Colorsensor v) {
 		this.steering = s;
 		this.time = t;
+		this.colorsensor = v;
 	}
 
 	public void vaihdasuunta() {
-
+		steering.suunta = !steering.suunta;
 		if (steering.suunta) {
 			LCD.clear();
 			LCD.drawInt(4, 0, 0);
 			danceRight();
 			steering.suunta = false;
 			LCD.drawString("Juu", 4, 5);
+			LCD.drawInt(colorsensor.whitecolor, 3, 5);
 
 		} else {
 			LCD.clear();
@@ -27,13 +33,8 @@ public class Control {
 			danceLeft();
 			steering.suunta = true;
 			LCD.drawString("Juu", 4, 5);
+			LCD.drawInt(colorsensor.blackcolor, 3, 5);
 			
-		}
-		try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 
 	}

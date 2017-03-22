@@ -4,8 +4,7 @@ import lejos.nxt.Button;
 
 
 public class Time implements Runnable{
-	boolean stop=false;
-	boolean tanssitaanko;
+	
 	Control control;
 
 	
@@ -13,23 +12,10 @@ public class Time implements Runnable{
 	{
 		this.control = c;
 	}
-	
-	public void tanssiAjastin(){
-		while(!stop){
-			
-			
-			while(Button.RIGHT.isPressed()){
-				control.danceLeft();
-			}
-			control.vaihdasuunta();
-			
-		}
-	}
+
 	@Override
 	public void run() {
-		tanssiAjastin();
-		
-		
+
 		
 	}
 
