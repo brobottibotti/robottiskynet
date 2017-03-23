@@ -5,8 +5,8 @@ import lejos.nxt.SensorPort;
 public class Colorsensor implements Runnable {
 	ColorSensor colorsensor = new ColorSensor(SensorPort.S1);
 	Control control;
-	int blacklight;
-	int whitelight;
+	int blackcolor;
+	int whitecolor;
 
 	public void setobjects(Control c) {
 		this.control = c;
@@ -16,9 +16,9 @@ public class Colorsensor implements Runnable {
 	
 	public void checkcolor() {
 
-			if (colorsensor.getLightValue() < blacklight) {
+			if (colorsensor.getLightValue() < blackcolor) {
 				control.turnRight();
-			} else if (colorsensor.getLightValue() >whitelight) {
+			} else if (colorsensor.getLightValue() >whitecolor) {
 				control.turnLeft();
 			}else{
 				control.forward();
@@ -27,14 +27,13 @@ public class Colorsensor implements Runnable {
 	}
 	public void getBlackLight(){
 		
-		blacklight = colorsensor.getLightValue();
+		blackcolor = colorsensor.getLightValue();
 		
 	}
 	public void getWhiteLight(){
-		 whitelight = colorsensor.getLightValue();
+		 whitecolor = colorsensor.getLightValue();
 	}
 
-	@Override
 	public void run() {
 		// TODO Auto-generated method stub
 		colorsensor.setFloodlight(true);

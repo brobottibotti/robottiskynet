@@ -11,7 +11,7 @@ public class Ultrasensori implements Runnable{
 	//Varisensori vari = new Varisensori();
 	//Control control = new Control();
 
-	@Override
+
 	public void run() {
 		// TODO ultra‰‰ni juttuja
 		//while(vari.getRunning() == true){
