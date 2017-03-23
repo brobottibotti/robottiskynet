@@ -27,11 +27,13 @@ public class Colorsensor implements Runnable {
 
 	}
 	public void getBlackLight(){
+		colorsensor.setFloodlight(true);
 		blackcolor = colorsensor.getLightValue();
 
 		}
 	
 	public void getWhiteLight(){
+		colorsensor.setFloodlight(true);
 		 whitecolor = colorsensor.getLightValue();
 	}
 

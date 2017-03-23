@@ -12,6 +12,7 @@ public class Robotti {
 		Colorsensor colorsensor = new Colorsensor();
 		
 		while(menu){
+			
 			LCD.drawString("Musta >", 0, 0);
 			LCD.drawInt(colorsensor.blackcolor, 0, 1);
 			if(Button.RIGHT.isPressed()){
