@@ -8,7 +8,6 @@ public class Control {
 	Time time;
 	Steering steering;
 	Colorsensor colorsensor;
-	String testi;
 	boolean stop=false;
 
 	public void setobjects(Time t, Steering s, Colorsensor v) {
@@ -17,13 +16,13 @@ public class Control {
 		this.colorsensor = v;
 	}
 
-	public void vaihdasuunta() {
-		steering.suunta = !steering.suunta;
-		if (steering.suunta) {
+	public void changeDirection() {
+		steering.direction = !steering.direction;
+		if (steering.direction) {
 			LCD.clear();
 			LCD.drawInt(4, 0, 0);
 			turnRight();
-			steering.suunta = false;
+			steering.direction = false;
 			LCD.drawString("Juu", 4, 5);
 			LCD.drawInt(colorsensor.whitecolor, 3, 5);
 
@@ -31,7 +30,7 @@ public class Control {
 			LCD.clear();
 			LCD.drawInt(5, 0, 1);
 			turnLeft();
-			steering.suunta = true;
+			steering.direction = true;
 			LCD.drawString("Juu", 4, 5);
 			LCD.drawInt(colorsensor.blackcolor, 3, 5);
 			
@@ -47,6 +46,14 @@ public class Control {
 	public void turnLeft() {
 		steering.turnLeft();
 
+	}
+	
+	public void timer(){
+		time.timer();
+	}
+	public void forward(){
+		
+		steering.forward();
 	}
 
 }

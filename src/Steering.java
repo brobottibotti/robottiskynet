@@ -4,7 +4,7 @@ import lejos.nxt.Motor;
 public class Steering {
 
 	Control control;
-	boolean suunta;
+	boolean direction;
 	public void setobjects(Control c)
 	{
 		this.control=c;
@@ -29,6 +29,14 @@ public class Steering {
 		Motor.C.backward();
 		Motor.A.forward();
 
+	}
+	public void forward(){
+		Motor.C.setSpeed(500);
+		Motor.A.setSpeed(500);
+		
+		Motor.C.forward();
+		Motor.A.forward();
+		
 	}
 
 

@@ -17,8 +17,8 @@ public class Robotti {
 		
 		Thread timer = new Thread(time);
 		timer.start();
-		Thread lanka1 = new Thread(colorsensor);
-		lanka1.start();
+		Thread color = new Thread(colorsensor);
+		color.start();
 		
 		
 		

@@ -15,9 +15,18 @@ public class Colorsensor implements Runnable {
 	//värien nouto
 	
 	public void checkcolor() {
-		while (!control.stop) {
+
+			colorsensor.setFloodlight(true);
+			if (colorsensor.getLightValue() < 20) {
+				control.turnRight();
+			} else if (colorsensor.getLightValue() >40) {
+				control.turnLeft();
+			}else{
+				control.forward();
+			}
+
 			
-		}
+		
 
 	}
 
@@ -25,7 +34,9 @@ public class Colorsensor implements Runnable {
 	public void run() {
 		// TODO Auto-generated method stub
 		colorsensor.setFloodlight(true);
-		checkcolor();
+		while (!control.stop) {
+			checkcolor();
+		}
 	}
 
 }
