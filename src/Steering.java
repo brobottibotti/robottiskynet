@@ -38,6 +38,14 @@ public class Steering {
 		Motor.A.forward();
 		
 	}
+	
+	public void backward(){
+		Motor.C.setSpeed(500);
+		Motor.A.setSpeed(500);
+		
+		Motor.C.backward();
+		Motor.A.backward();
+	}
 
 
 	
