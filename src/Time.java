@@ -19,7 +19,7 @@ public class Time implements Runnable{
 		LCD.drawInt(stopwatch.elapsed()/1000, 0, 1);
 	}
 	
-	@Override
+
 	public void run() {
 		while(!control.stop){
 		timer();

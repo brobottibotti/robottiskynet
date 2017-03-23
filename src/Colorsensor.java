@@ -1,3 +1,4 @@
+import lejos.nxt.Button;
 import lejos.nxt.ColorSensor;
 import lejos.nxt.LCD;
 import lejos.nxt.SensorPort;
@@ -7,7 +8,7 @@ public class Colorsensor implements Runnable {
 	Control control;
 	int blackcolor;
 	int whitecolor;
-
+	boolean mittaus;
 	public void setobjects(Control c) {
 		this.control = c;
 	}
@@ -26,10 +27,10 @@ public class Colorsensor implements Runnable {
 
 	}
 	public void getBlackLight(){
-		
 		blackcolor = colorsensor.getLightValue();
-		
-	}
+
+		}
+	
 	public void getWhiteLight(){
 		 whitecolor = colorsensor.getLightValue();
 	}
