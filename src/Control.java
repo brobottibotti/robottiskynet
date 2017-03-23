@@ -22,7 +22,7 @@ public class Control {
 		if (steering.suunta) {
 			LCD.clear();
 			LCD.drawInt(4, 0, 0);
-			danceRight();
+			turnRight();
 			steering.suunta = false;
 			LCD.drawString("Juu", 4, 5);
 			LCD.drawInt(colorsensor.whitecolor, 3, 5);
@@ -30,7 +30,7 @@ public class Control {
 		} else {
 			LCD.clear();
 			LCD.drawInt(5, 0, 1);
-			danceLeft();
+			turnLeft();
 			steering.suunta = true;
 			LCD.drawString("Juu", 4, 5);
 			LCD.drawInt(colorsensor.blackcolor, 3, 5);
@@ -39,13 +39,13 @@ public class Control {
 
 	}
 
-	public void danceRight() {
-		steering.danceRight();
+	public void turnRight() {
+		steering.turnRight();
 
 	}
 
-	public void danceLeft() {
-		steering.danceLeft();
+	public void turnLeft() {
+		steering.turnLeft();
 
 	}
 

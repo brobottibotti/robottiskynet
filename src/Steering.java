@@ -12,15 +12,16 @@ public class Steering {
 	
 	
 	
-	public void danceRight(){
+	public void turnRight(){
 		Motor.C.setSpeed(500);
 		Motor.A.setSpeed(500);
 		
 		Motor.C.forward();
 		Motor.A.backward();
+		
 
 	}
-	public void danceLeft(){
+	public void turnLeft(){
 
 		Motor.C.setSpeed(500);
 		Motor.A.setSpeed(500);
