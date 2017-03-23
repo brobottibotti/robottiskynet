@@ -5,8 +5,7 @@ import lejos.nxt.UltrasonicSensor;
 
 
 public class Ultrasensori implements Runnable{
-	int ika;
-	private Boolean onnia;
+	
 	//UltrasonicSensor ultra = new UltrasonicSensor(SensorPort.S4);
 	//Varisensori vari = new Varisensori();
 	//Control control = new Control();
