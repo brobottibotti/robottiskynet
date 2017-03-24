@@ -2,7 +2,7 @@ import lejos.nxt.Button;
 
 
 public class Robotti {
-	
+	public static boolean stop = false;
 	public static void main(String[] args) {
 		
 		Control control = new Control();
@@ -12,7 +12,6 @@ public class Robotti {
 		Pilot pilot = new Pilot();
 		Printer printer = new Printer();
 		
-		boolean stop = false;
 		
 		
 		control.setobjects(time, steering, colorsensor, printer, pilot);
@@ -31,10 +30,13 @@ public class Robotti {
 		{
 			control.Pilot();
 		}
-		
-		
-		
-		
+
 	}
+	
+	public static void setStop(){
+		stop = !stop;
+	}
+
+	
 
 }

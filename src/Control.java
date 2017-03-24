@@ -11,7 +11,6 @@ public class Control {
 	Printer printer;
 	Pilot pilot;
 	
-	boolean stop=false;
 	int pilotType;
 
 	public void setobjects(Time t, Steering s, Colorsensor v, Printer pr, Pilot pi) {
@@ -67,8 +66,11 @@ public class Control {
 	public void getWhiteLight(){
 		colorsensor.getWhiteLight();
 	}
-	
+	public void shutdown(){
+		Robotti.setStop();
+		
+	}
 }
 	
 
-}
+

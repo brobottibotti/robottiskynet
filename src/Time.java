@@ -21,9 +21,10 @@ public class Time implements Runnable{
 	
 
 	public void run() {
-		while(!control.stop){
-		timer();
-		}
+		//while(!control.stop){
+		//timer();
+		//}
 	}
+	
 
 }
