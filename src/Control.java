@@ -19,7 +19,7 @@ public class Control {
 		this.colorsensor = v;
 		
 		//starting Pilot type
-		this.pilotType = 2;
+		this.pilotType = 1;
 		
 		this.pilot = pi;
 		this.printer = pr;

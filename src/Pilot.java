@@ -27,31 +27,37 @@ public class Pilot {
 		}
 	}
 	
-	
-
 	public void Valikko() {
-		control.Print("moro!");
+		while(!Button.ESCAPE.isPressed()){
 		LCD.drawString("kalibrointi >", 0, 0);
 		LCD.drawString("aja <", 0, 1);
 		LCD.drawString(" esc sammuta", 0, 2);
-		if(Button.RIGHT.isPressed()){Run(2);}
-		else if(Button.LEFT.isPressed()){Run(3);}
-		else if(Button.ESCAPE.isPressed()){control.stop=false;}
+		if(Button.RIGHT.isPressed()){LCD.clear(); Run(2);}
+		else if(Button.LEFT.isPressed()){LCD.clear(); Run(3);}
+		}
 	}
 	
 	public void Calibrate(){
-		while(!Button.ESCAPE.isPressed()){
+			while(!Button.ESCAPE.isPressed()){
+				
 			LCD.drawString("black >", 0, 0);
 			LCD.drawString("white <", 0, 1);
-			LCD.drawString("esc jatka", 0, 2);
+			LCD.drawString(" enter menu", 0, 2);
 			if(Button.RIGHT.isPressed()){control.getBlackLight();}
 			else if(Button.LEFT.isPressed()){control.getWhiteLight();}
-			else if(Button.ESCAPE.isPressed()){Run(1);}
+			else if(Button.ENTER.isPressed()){LCD.clear(); Run(1);}
+			}
 		}
 		
-	}
+	
 	public void Drive(){
-		
+		while(!Button.ESCAPE.isPressed()){
+		LCD.clear();
+		control.forward();
+		if(Button.ESCAPE.isPressed()){
+			control.shutdown();
+		}
+		}
 		
 	}
 

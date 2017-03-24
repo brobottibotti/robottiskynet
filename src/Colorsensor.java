@@ -42,7 +42,7 @@ public class Colorsensor implements Runnable {
 	public void run() {
 		// TODO Auto-generated method stub
 		colorsensor.setFloodlight(true);
-		while (control.pilotType == 1) {
+		while (control.pilotType == 3) {
 			checkcolor();
 		}
 	}
