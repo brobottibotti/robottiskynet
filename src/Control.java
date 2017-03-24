@@ -60,6 +60,15 @@ public class Control {
 		steering.forward();
 	}
 	
+	public void getBlackLight(){
+		colorsensor.getBlackLight();
+	}	
+	
+	public void getWhiteLight(){
+		colorsensor.getWhiteLight();
+	}
+	
+}
 	
 
 }

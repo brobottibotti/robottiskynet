@@ -29,20 +29,20 @@ public class Colorsensor implements Runnable {
 	public void getBlackLight(){
 		colorsensor.setFloodlight(true);
 		blackcolor = colorsensor.getLightValue();
+		LCD.drawInt(blackcolor, 0, 4);
 
 		}
 	
 	public void getWhiteLight(){
 		colorsensor.setFloodlight(true);
 		 whitecolor = colorsensor.getLightValue();
+		 LCD.drawInt(whitecolor, 0, 5);
 	}
 
 	public void run() {
 		// TODO Auto-generated method stub
 		colorsensor.setFloodlight(true);
-		getBlackLight();
-		getWhiteLight();
-		while (!control.stop) {
+		while (control.pilotType == 1) {
 			checkcolor();
 		}
 	}
