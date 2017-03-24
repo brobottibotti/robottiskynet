@@ -5,6 +5,7 @@ public class Steering {
 
 	Control control;
 	boolean direction;
+	float maxspeed = 400;
 	public void setobjects(Control c)
 	{
 		this.control=c;
@@ -13,26 +14,26 @@ public class Steering {
 	
 	
 	public void turnRight(){
-		Motor.C.setSpeed(500);
-		Motor.A.setSpeed(500);
+		Motor.C.setSpeed((float)(maxspeed*0.4));
+		Motor.A.setSpeed((float)(maxspeed));
 		
 		Motor.C.forward();
-		Motor.A.backward();
+		Motor.A.forward();
 		
 
 	}
 	public void turnLeft(){
 
-		Motor.C.setSpeed(500);
-		Motor.A.setSpeed(500);
+		Motor.C.setSpeed((float)(maxspeed));
+		Motor.A.setSpeed((float)(maxspeed*0.4));
 		
-		Motor.C.backward();
+		Motor.C.forward();
 		Motor.A.forward();
 
 	}
 	public void forward(){
-		Motor.C.setSpeed(500);
-		Motor.A.setSpeed(500);
+		Motor.C.setSpeed((float)(maxspeed));
+		Motor.A.setSpeed((float)(maxspeed));
 		
 		Motor.C.forward();
 		Motor.A.forward();
@@ -40,8 +41,8 @@ public class Steering {
 	}
 	
 	public void backward(){
-		Motor.C.setSpeed(500);
-		Motor.A.setSpeed(500);
+		Motor.C.setSpeed((float)(maxspeed));
+		Motor.A.setSpeed((float)(maxspeed));
 		
 		Motor.C.backward();
 		Motor.A.backward();

@@ -9,41 +9,40 @@ public class Colorsensor implements Runnable {
 	int blackcolor;
 	int whitecolor;
 	boolean mittaus;
+	int lightvalue;
 	public void setobjects(Control c) {
 		this.control = c;
 	}
 
 	//värien nouto
 	
-	public void checkcolor() {
-			control.forward();
-			if (colorsensor.getLightValue() <= blackcolor) {
-				control.turnRight();
-			} else if (colorsensor.getLightValue() >=whitecolor) {
-				control.turnLeft();
-			}else{
-				control.forward();
-			}
+	public void updatecolor() {
+			lightvalue = colorsensor.getLightValue();
+			
 
 	}
-	public void getBlackLight(){
+	public int getLight(){
+		return lightvalue;
+		
+	}
+	public void setBlackLight(){
 		colorsensor.setFloodlight(true);
-		blackcolor = colorsensor.getLightValue();
-		LCD.drawInt(blackcolor, 0, 4);
+		blackcolor = colorsensor.getLightValue()+10;
+		
 
 		}
 	
-	public void getWhiteLight(){
+	public void setWhiteLight(){
 		colorsensor.setFloodlight(true);
 		 whitecolor = colorsensor.getLightValue();
-		 LCD.drawInt(whitecolor, 0, 5);
 	}
 
 	public void run() {
-		// TODO Auto-generated method stub
-		colorsensor.setFloodlight(true);
-		while (control.pilotType == 3) {
-			checkcolor();
+	//	// TODO Auto-generated method stub
+	//	colorsensor.setFloodlight(true);
+		//vaihda stoppi controllin kautta jossain vaiheessa
+		while (!Robotti.stop) {
+		updatecolor();
 		}
 	}
 

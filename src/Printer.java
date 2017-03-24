@@ -9,7 +9,7 @@ public class Printer {
 	{
 		this.control=c;
 	}
-	
+	//lis‰‰ koordinaatit
 	public static void print(String a)
 	{
 		LCD.drawString(a, 0, 0);
@@ -19,6 +19,9 @@ public class Printer {
 		LCD.clear();
 		LCD.drawString(a, 0, 0);
 	}
-	
+	public void printint(int a, int x, int y){
+		
+		LCD.drawInt(a, x, y);
+	}
 	
 }

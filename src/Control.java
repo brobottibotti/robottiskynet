@@ -59,12 +59,12 @@ public class Control {
 		steering.forward();
 	}
 	
-	public void getBlackLight(){
-		colorsensor.getBlackLight();
+	public void setBlackLight(){
+		colorsensor.setBlackLight();
 	}	
 	
-	public void getWhiteLight(){
-		colorsensor.getWhiteLight();
+	public void setWhiteLight(){
+		colorsensor.setWhiteLight();
 	}
 	public void shutdown(){
 		Robotti.setStop();
