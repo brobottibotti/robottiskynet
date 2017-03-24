@@ -10,10 +10,10 @@ public class Control {
 	Colorsensor colorsensor;
 	Printer printer;
 	Pilot pilot;
-	
+	Ultrasensori ultrasensori;
 	int pilotType;
 
-	public void setobjects(Time t, Steering s, Colorsensor v, Printer pr, Pilot pi) {
+	public void setobjects(Time t, Steering s, Colorsensor v, Printer pr, Pilot pi, Ultrasensori us) {
 		this.steering = s;
 		this.time = t;
 		this.colorsensor = v;
@@ -23,6 +23,7 @@ public class Control {
 		
 		this.pilot = pi;
 		this.printer = pr;
+		this.ultrasensori = us;
 	}
 
 
@@ -69,6 +70,9 @@ public class Control {
 	public void shutdown(){
 		Robotti.setStop();
 		
+	}
+	public int sense(){
+		return ultrasensori.etaisyys();
 	}
 }
 	

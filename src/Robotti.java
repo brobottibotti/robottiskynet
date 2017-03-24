@@ -11,15 +11,16 @@ public class Robotti {
 		Colorsensor colorsensor = new Colorsensor();
 		Pilot pilot = new Pilot();
 		Printer printer = new Printer();
+		Ultrasensori ultrasensor = new Ultrasensori();
 		
 		
-		
-		control.setobjects(time, steering, colorsensor, printer, pilot);
+		control.setobjects(time, steering, colorsensor, printer, pilot, ultrasensor);
 		steering.setobjects(control);
 		time.setobjects(control);
 		colorsensor.setobjects(control);
 		printer.setobjects(control);
 		pilot.setobjects(control);
+		ultrasensor.setobjects(control);
 		
 		Thread timer = new Thread(time);
 		timer.start();

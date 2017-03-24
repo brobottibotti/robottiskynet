@@ -47,6 +47,8 @@ public class Pilot {
 			LCD.drawString("black >", 0, 0);
 			LCD.drawString("white <", 0, 1);
 			LCD.drawString(" enter menu", 0, 2);
+			int ultrasensoridata = control.sense(); // ultrasensorin arvot
+			control.printer.printint(ultrasensoridata, 0, 6);
 			if (Button.RIGHT.isPressed()) {
 				control.setBlackLight();
 				//getit ja setit controlliin
@@ -65,7 +67,7 @@ public class Pilot {
 		while (!Button.ESCAPE.isPressed()) {
 			//control.colorsensor.checkcolor();
 			LCD.drawInt(control.colorsensor.lightvalue, 0, 5);
-
+			
 			if (control.colorsensor.getLight() <= control.colorsensor.blackcolor) {
 				control.turnRight();
 			} else {
@@ -78,5 +80,3 @@ public class Pilot {
 		}
 
 	}
-
-
