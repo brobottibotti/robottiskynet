@@ -13,8 +13,11 @@ public class Pilot {
 		case 1:
 			Test();
 			break;
+		
+		case 2:
+			Calibrate();
+			break;
 		}
-
 	}
 	
 	
@@ -23,7 +26,7 @@ public class Pilot {
 		control.Print("moro!");
 	}
 	
-	public void homo(){
+	public void Calibrate(){
 		
 	}
 

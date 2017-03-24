@@ -16,10 +16,10 @@ public class Colorsensor implements Runnable {
 	//värien nouto
 	
 	public void checkcolor() {
-
-			if (colorsensor.getLightValue() < blackcolor) {
+			control.forward();
+			if (colorsensor.getLightValue() <= blackcolor) {
 				control.turnRight();
-			} else if (colorsensor.getLightValue() >whitecolor) {
+			} else if (colorsensor.getLightValue() >=whitecolor) {
 				control.turnLeft();
 			}else{
 				control.forward();
