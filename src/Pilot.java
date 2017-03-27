@@ -54,11 +54,11 @@ public class Pilot {
 			control.Printstring("white <", 0, 1);
 			control.Printstring("enter menu", 0, 2);
 			
-			int ultrasensoridata = control.sense(); // ultrasensorin arvot
-			control.printer.printint(ultrasensoridata, 0, 6);
+			// ultrasensorin arvot
+			int ultrasensoridata = control.sense(); 
+			control.Printint(ultrasensoridata, 0, 6);
 			if (Button.RIGHT.isPressed()) {
 				control.setBlackLight();
-				// getit ja setit controlliin
 				control.Printint(control.getBlackLight(), 0, 3);
 			} else if (Button.LEFT.isPressed()) {
 				control.setWhiteLight();
@@ -76,7 +76,7 @@ public class Pilot {
 			// control.colorsensor.checkcolor();
 			control.Printint(control.getLight(), 0, 5);
 			int ultrasensoridata = control.sense();
-			control.printer.printint(ultrasensoridata, 0, 6);
+			control.Printint(ultrasensoridata, 0, 6);
 
 			if (control.getLight() <= control.getBlackLight()) {
 				control.turnRight();
