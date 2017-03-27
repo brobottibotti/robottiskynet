@@ -11,8 +11,8 @@ public class Printer {
 
 	// tekstin tulostus metodi
 	// lisää koordinaatit
-	public static void print(String a) {
-		LCD.drawString(a, 0, 0);
+	public void printstring(String a, int x, int y) {
+		LCD.drawString(a, x, y);
 	}
 
 	// näytön tyhjennys metodi

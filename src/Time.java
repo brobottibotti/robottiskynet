@@ -13,12 +13,13 @@ public class Time implements Runnable {
 
 	// Ajan tulostus
 	// vaihda print olioon
+	// vaihda pilot luokkaan
 	public void timer() {
-		LCD.drawString("Aika: ", 0, 0);
-		LCD.drawInt(stopwatch.elapsed() / 1000, 0, 1);
+		control.Printstring("Aika: ", 0, 0);
+		control.Printint(stopwatch.elapsed() / 1000, 0, 1);
 	}
 
-	// tiemr säie, joka tulostaa aikaa.
+	// timer säie, joka tulostaa aikaa.
 	public void run() {
 		while (!control.getStop()) {
 			timer();

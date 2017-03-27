@@ -37,7 +37,7 @@ public class Colorsensor implements Runnable {
 	// Palauttaa blacklight arvon
 
 	public int getBlackLight() {
-		return this.blacklight;
+		return blacklight;
 	}
 
 	// Mahdollinen valkoisen arvon maksimiarvo
@@ -50,7 +50,7 @@ public class Colorsensor implements Runnable {
 	// Palauttaa WhiteLight arvon
 
 	public int getWhiteLight() {
-		return this.whitelight;
+		return whitelight;
 	}
 
 	// Colorsensor s‰ie jolla p‰ivitet‰‰n Lightvalue attribuuttia kutsumalla

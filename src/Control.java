@@ -50,8 +50,12 @@ public class Control {
 	//
 	// Printer
 	//
-	public void Print(String s) {
-		printer.print(s);
+	public void Printstring(String s, int x, int y) {
+		printer.printstring(s, x, y);
+	}
+	
+	public void Printint(int a, int x, int y){
+		printer.printint(a, x, y);
 	}
 
 	//
@@ -71,20 +75,23 @@ public class Control {
 	//
 	// Colorsensor
 	//
+	public int getLight(){
+		return colorsensor.getLight();
+	}
 	public void setBlackLight() {
 		colorsensor.setBlackLight();
 	}
 
-	public void getBlackLight() {
-		colorsensor.getBlackLight();
+	public int getBlackLight() {
+		return colorsensor.getBlackLight();
 	}
 
 	public void setWhiteLight() {
 		colorsensor.setWhiteLight();
 	}
 
-	public void getWhiteLight() {
-		colorsensor.getWhiteLight();
+	public int getWhiteLight() {
+		return colorsensor.getWhiteLight();
 	}
 
 	//

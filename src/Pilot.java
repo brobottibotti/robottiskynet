@@ -30,16 +30,18 @@ public class Pilot {
 	// case Main menu, jossa on sensorien kalibrointi, ohjelman sammutus ja
 	// robotin ajoon siirtymis vaihtoehdot.
 	public void Valikko() {
-		while (!Button.ESCAPE.isPressed()) {
-			LCD.drawString("kalibrointi >", 0, 0);
-			LCD.drawString("aja <", 0, 1);
-			LCD.drawString(" esc sammuta", 0, 2);
+		while (!control.getStop()) {
+			control.Printstring("kalibrointi >", 0, 0);
+			control.Printstring("aja <", 0, 1);
+			control.Printstring("esc sammuta", 0, 2);
 			if (Button.RIGHT.isPressed()) {
 				LCD.clear();
 				Run(2);
 			} else if (Button.LEFT.isPressed()) {
 				LCD.clear();
 				Run(3);
+			}else if (Button.ESCAPE.isPressed()){
+				control.shutdown();
 			}
 		}
 	}
@@ -47,20 +49,20 @@ public class Pilot {
 	// case värisensorin kalibrointi. Tämän casen aikana haetaan käytettävän
 	// viivan maksimi musta arvo, jotta ohjelma tietää koska se kääntyy.
 	public void Calibrate() {
-		while (!Button.ESCAPE.isPressed()) {
-
-			LCD.drawString("black >", 0, 0);
-			LCD.drawString("white <", 0, 1);
-			LCD.drawString(" enter menu", 0, 2);
+		while (!control.getStop()) {
+			control.Printstring("black >", 0, 0);
+			control.Printstring("white <", 0, 1);
+			control.Printstring("enter menu", 0, 2);
+			
 			int ultrasensoridata = control.sense(); // ultrasensorin arvot
 			control.printer.printint(ultrasensoridata, 0, 6);
 			if (Button.RIGHT.isPressed()) {
 				control.setBlackLight();
 				// getit ja setit controlliin
-				control.printer.printint(control.colorsensor.blacklight, 0, 3);
+				control.Printint(control.getBlackLight(), 0, 3);
 			} else if (Button.LEFT.isPressed()) {
 				control.setWhiteLight();
-				control.printer.printint(control.colorsensor.whitelight, 0, 4);
+				control.Printint(control.getWhiteLight(), 0, 4);
 			} else if (Button.ENTER.isPressed()) {
 				LCD.clear();
 				Run(1);
@@ -72,16 +74,19 @@ public class Pilot {
 	public void Drive() {
 		while (!control.getStop()) {
 			// control.colorsensor.checkcolor();
-			LCD.drawInt(control.colorsensor.lightvalue, 0, 5);
+			control.Printint(control.getLight(), 0, 5);
+			int ultrasensoridata = control.sense();
+			control.printer.printint(ultrasensoridata, 0, 6);
 
-			if (control.colorsensor.getLight() <= control.colorsensor.blacklight) {
+			if (control.getLight() <= control.getBlackLight()) {
 				control.turnRight();
 			} else {
 				control.turnLeft();
 			}
+			if (Button.ESCAPE.isPressed()) {
+				control.shutdown();
 		}
-		if (Button.ESCAPE.isPressed()) {
-			control.shutdown();
+		
 		}
 	}
 
