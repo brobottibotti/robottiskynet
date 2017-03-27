@@ -9,6 +9,7 @@ public class Pilot {
 		this.control = c;
 	}
 
+	// "pilotti" switch case, jolla ohjataan ohjelman kulkua
 	public void Run(int type) {
 
 		switch (type) {
@@ -26,6 +27,8 @@ public class Pilot {
 		}
 	}
 
+	// case Main menu, jossa on sensorien kalibrointi, ohjelman sammutus ja
+	// robotin ajoon siirtymis vaihtoehdot.
 	public void Valikko() {
 		while (!Button.ESCAPE.isPressed()) {
 			LCD.drawString("kalibrointi >", 0, 0);
@@ -41,6 +44,8 @@ public class Pilot {
 		}
 	}
 
+	// case v‰risensorin kalibrointi. T‰m‰n casen aikana haetaan k‰ytett‰v‰n
+	// viivan maksimi musta arvo, jotta ohjelma tiet‰‰ koska se k‰‰ntyy.
 	public void Calibrate() {
 		while (!Button.ESCAPE.isPressed()) {
 
@@ -51,11 +56,11 @@ public class Pilot {
 			control.printer.printint(ultrasensoridata, 0, 6);
 			if (Button.RIGHT.isPressed()) {
 				control.setBlackLight();
-				//getit ja setit controlliin
-				control.printer.printint(control.colorsensor.blackcolor, 0, 3);
+				// getit ja setit controlliin
+				control.printer.printint(control.colorsensor.blacklight, 0, 3);
 			} else if (Button.LEFT.isPressed()) {
 				control.setWhiteLight();
-				control.printer.printint(control.colorsensor.whitecolor, 0, 4);
+				control.printer.printint(control.colorsensor.whitelight, 0, 4);
 			} else if (Button.ENTER.isPressed()) {
 				LCD.clear();
 				Run(1);
@@ -63,20 +68,21 @@ public class Pilot {
 		}
 	}
 
+	// case Ajo-tila. T‰ss‰ casessa robotti pyrkii seuraamaan mustaa viivaa.
 	public void Drive() {
-		while (!Button.ESCAPE.isPressed()) {
-			//control.colorsensor.checkcolor();
+		while (!control.getStop()) {
+			// control.colorsensor.checkcolor();
 			LCD.drawInt(control.colorsensor.lightvalue, 0, 5);
-			
-			if (control.colorsensor.getLight() <= control.colorsensor.blackcolor) {
+
+			if (control.colorsensor.getLight() <= control.colorsensor.blacklight) {
 				control.turnRight();
 			} else {
 				control.turnLeft();
 			}
-			}
-			if (Button.ESCAPE.isPressed()) {
-				control.shutdown();
-			}
 		}
-
+		if (Button.ESCAPE.isPressed()) {
+			control.shutdown();
+		}
 	}
+
+}

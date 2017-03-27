@@ -13,68 +13,93 @@ public class Control {
 	Ultrasensori ultrasensori;
 	int pilotType;
 
-	public void setobjects(Time t, Steering s, Colorsensor v, Printer pr, Pilot pi, Ultrasensori us) {
+	public void setobjects(Time t, Steering s, Colorsensor v, Printer pr,
+			Pilot pi, Ultrasensori us) {
 		this.steering = s;
 		this.time = t;
 		this.colorsensor = v;
-		
-		//starting Pilot type
-		this.pilotType = 1;
-		
 		this.pilot = pi;
 		this.printer = pr;
 		this.ultrasensori = us;
+		// starting Pilot type
+		this.pilotType = 1;
+
 	}
 
+	// Ohjelman sammutus metodi
+	public void shutdown() {
+		Robotti.setStop();
+	}
 
-	public void Pilot()
-	{
+	// Palauttaa pysäytys booleain arvon
+	public boolean getStop() {
+		return Robotti.stop;
+	}
+
+	//
+	// Pilot
+	//
+	public void Pilot() {
 		pilot.Run(pilotType);
 	}
-	public void setPilot(int type)
-	{
+
+	public void setPilot(int type) {
 		this.pilotType = type;
 	}
-	
-	public void Print(String s)
-	{
+
+	//
+	// Printer
+	//
+	public void Print(String s) {
 		printer.print(s);
 	}
-	
 
+	//
+	// Timer
+	//
+	public void timer() {
+		// time.timer();
+	}
+
+	//
+	// Ultrasensor
+	//
+	public int sense() {
+		return ultrasensori.etaisyys();
+	}
+
+	//
+	// Colorsensor
+	//
+	public void setBlackLight() {
+		colorsensor.setBlackLight();
+	}
+
+	public void getBlackLight() {
+		colorsensor.getBlackLight();
+	}
+
+	public void setWhiteLight() {
+		colorsensor.setWhiteLight();
+	}
+
+	public void getWhiteLight() {
+		colorsensor.getWhiteLight();
+	}
+
+	//
+	// Steering
+	//
 	public void turnRight() {
 		steering.turnRight();
-
 	}
 
 	public void turnLeft() {
 		steering.turnLeft();
+	}
 
-	}
-	
-	public void timer(){
-		//time.timer();
-	}
-	public void forward(){
-		
+	public void forward() {
 		steering.forward();
 	}
-	
-	public void setBlackLight(){
-		colorsensor.setBlackLight();
-	}	
-	
-	public void setWhiteLight(){
-		colorsensor.setWhiteLight();
-	}
-	public void shutdown(){
-		Robotti.setStop();
-		
-	}
-	public int sense(){
-		return ultrasensori.etaisyys();
-	}
+
 }
-	
-
-

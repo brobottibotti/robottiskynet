@@ -6,43 +6,61 @@ import lejos.nxt.SensorPort;
 public class Colorsensor implements Runnable {
 	ColorSensor colorsensor = new ColorSensor(SensorPort.S1);
 	Control control;
-	int blackcolor;
-	int whitecolor;
+	int blacklight;
+	int whitelight;
 	boolean mittaus;
 	int lightvalue;
+
 	public void setobjects(Control c) {
 		this.control = c;
 	}
 
-	//v‰rien nouto
-	
+	// P‰ivitt‰‰ light attribuuttiin valosensorin arvon
+
 	public void updatecolor() {
-			lightvalue = colorsensor.getLightValue();
-			
-
+		lightvalue = colorsensor.getLightValue();
 	}
-	public int getLight(){
+
+	// Palauttaa lightvalue attribuutin arvon
+
+	public int getLight() {
 		return lightvalue;
-		
 	}
-	public void setBlackLight(){
-		colorsensor.setFloodlight(true);
-		blackcolor = colorsensor.getLightValue()+10;
-		
 
-		}
-	
-	public void setWhiteLight(){
+	// Kalibroinnin aikainen blacklight arvon asetus
+
+	public void setBlackLight() {
 		colorsensor.setFloodlight(true);
-		 whitecolor = colorsensor.getLightValue();
+		blacklight = colorsensor.getLightValue() + 10;
 	}
+
+	// Palauttaa blacklight arvon
+
+	public int getBlackLight() {
+		return this.blacklight;
+	}
+
+	// Mahdollinen valkoisen arvon maksimiarvo
+
+	public void setWhiteLight() {
+		colorsensor.setFloodlight(true);
+		whitelight = colorsensor.getLightValue();
+	}
+
+	// Palauttaa WhiteLight arvon
+
+	public int getWhiteLight() {
+		return this.whitelight;
+	}
+
+	// Colorsensor s‰ie jolla p‰ivitet‰‰n Lightvalue attribuuttia kutsumalla
+	// metodia.
 
 	public void run() {
-	//	// TODO Auto-generated method stub
-	//	colorsensor.setFloodlight(true);
-		//vaihda stoppi controllin kautta jossain vaiheessa
-		while (!Robotti.stop) {
-		updatecolor();
+
+		// vaihda stoppi controllin kautta jossain vaiheessa
+		while (!control.getStop()) {
+			updatecolor();
 		}
 	}
 

@@ -3,23 +3,21 @@ import lejos.nxt.Motor;
 import lejos.nxt.SensorPort;
 import lejos.nxt.UltrasonicSensor;
 
-
-public class Ultrasensori{
+public class Ultrasensori {
 	Control control;
 	int etaisyys;
 	UltrasonicSensor ultra = new UltrasonicSensor(SensorPort.S4);
-		
-	public void setobjects(Control c){
+
+	public void setobjects(Control c) {
 		this.control = c;
 	}
-	
-	public int etaisyys(){
+
+	// etäisyyden asetus ja palautus metodi
+	public int etaisyys() {
 		etaisyys = ultra.getDistance();
 		return etaisyys;
-		//LCD.clear();
-		//LCD.drawString("Distance: " + etaisyys, 0, 3);
-		}
-	
+		// LCD.clear();
+		// LCD.drawString("Distance: " + etaisyys, 0, 3);
 	}
 
-
+}
