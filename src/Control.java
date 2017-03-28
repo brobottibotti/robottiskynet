@@ -53,8 +53,8 @@ public class Control {
 	public void Printstring(String s, int x, int y) {
 		printer.printstring(s, x, y);
 	}
-	
-	public void Printint(int a, int x, int y){
+
+	public void Printint(int a, int x, int y) {
 		printer.printint(a, x, y);
 	}
 
@@ -63,6 +63,14 @@ public class Control {
 	//
 	public void timer() {
 		// time.timer();
+	}
+
+	public int getTime() {
+		return time.getTime();
+	}
+
+	public int endTime() {
+		return time.endTime();
 	}
 
 	//
@@ -75,9 +83,10 @@ public class Control {
 	//
 	// Colorsensor
 	//
-	public int getLight(){
+	public int getLight() {
 		return colorsensor.getLight();
 	}
+
 	public void setBlackLight() {
 		colorsensor.setBlackLight();
 	}
@@ -94,9 +103,17 @@ public class Control {
 		return colorsensor.getWhiteLight();
 	}
 
+	public int treshold() {
+		return colorsensor.treshold();
+	}
+
 	//
 	// Steering
 	//
+	public void steerRun(int i) {
+		steering.Run(i);
+	}
+
 	public void turnRight() {
 		steering.turnRight();
 	}
@@ -107,6 +124,10 @@ public class Control {
 
 	public void forward() {
 		steering.forward();
+	}
+
+	public void fullstop() {
+		steering.fullstop();
 	}
 
 }

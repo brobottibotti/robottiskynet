@@ -1,13 +1,11 @@
-import lejos.nxt.Button;
 import lejos.nxt.ColorSensor;
-import lejos.nxt.LCD;
 import lejos.nxt.SensorPort;
 
 public class Colorsensor implements Runnable {
 	ColorSensor colorsensor = new ColorSensor(SensorPort.S1);
 	Control control;
-	int blacklight;
-	int whitelight;
+	int blacklight = 15;
+	int whitelight = 45;
 	boolean mittaus;
 	int lightvalue;
 
@@ -51,6 +49,10 @@ public class Colorsensor implements Runnable {
 
 	public int getWhiteLight() {
 		return whitelight;
+	}
+
+	public int treshold() {
+		return (whitelight + blacklight) / 2;
 	}
 
 	// Colorsensor s‰ie jolla p‰ivitet‰‰n Lightvalue attribuuttia kutsumalla

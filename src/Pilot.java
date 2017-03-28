@@ -1,5 +1,6 @@
 import lejos.nxt.Button;
 import lejos.nxt.LCD;
+import lejos.nxt.Sound;
 
 public class Pilot {
 
@@ -24,9 +25,13 @@ public class Pilot {
 		case 3:
 			Drive();
 			break;
-		
+
 		case 4:
 			Configure();
+			break;
+
+		case 5:
+			Final();
 			break;
 		}
 	}
@@ -36,19 +41,18 @@ public class Pilot {
 	public void Valikko() {
 		while (!control.getStop()) {
 			control.Printstring("kalibrointi >", 0, 0);
-			control.Printstring("aja <", 0, 1);
-			control.Printstring("esc sammuta", 0, 2);
-			control.Printstring("enter konfigurointi", 0, 3);
+			control.Printstring("konfigurointi <", 0, 1);
+			control.Printstring("enter aja", 0, 2);
 			if (Button.RIGHT.isPressed()) {
 				LCD.clear();
 				Run(2);
 			} else if (Button.LEFT.isPressed()) {
 				LCD.clear();
-				Run(3);
-			}else if (Button.ESCAPE.isPressed()){
-				control.shutdown();
-			}else if (Button.ENTER.isPressed()){
 				Run(4);
+			} else if (Button.ENTER.isPressed()) {
+				LCD.clear();
+				control.time.stopwatch.reset();
+				Run(3);
 			}
 		}
 	}
@@ -59,10 +63,10 @@ public class Pilot {
 		while (!control.getStop()) {
 			control.Printstring("black >", 0, 0);
 			control.Printstring("white <", 0, 1);
-			control.Printstring("enter menu", 0, 2);
-			
+			control.Printstring("esc menu", 0, 2);
+
 			// ultrasensorin arvot
-			int ultrasensoridata = control.sense(); 
+			int ultrasensoridata = control.sense();
 			control.Printint(ultrasensoridata, 0, 5);
 			if (Button.RIGHT.isPressed()) {
 				control.setBlackLight();
@@ -70,10 +74,17 @@ public class Pilot {
 			} else if (Button.LEFT.isPressed()) {
 				control.setWhiteLight();
 				control.Printint(control.getWhiteLight(), 0, 4);
-			} else if (Button.ENTER.isPressed()) {
+			} else if (Button.ESCAPE.isPressed()) {
 				LCD.clear();
 				Run(1);
 			}
+		}
+	}
+
+	// tiedonsiirto pilotti
+	public void Configure() {
+		while (!control.getStop()) {
+
 		}
 	}
 
@@ -81,26 +92,43 @@ public class Pilot {
 	public void Drive() {
 		while (!control.getStop()) {
 			// control.colorsensor.checkcolor();
+			control.Printstring("Aika: ", 0, 0);
+			control.Printint(control.getTime(), 7, 0);
 			control.Printint(control.getLight(), 0, 4);
 			int ultrasensoridata = control.sense();
 			control.Printint(ultrasensoridata, 0, 5);
 
-			if (control.getLight() <= control.getBlackLight()+5) {
-				control.turnRight();
-			} else if (control.getLight() >= control.getWhiteLight()) {
-				control.turnLeft();
-			}else if (control.getLight() < control.getWhiteLight() && control.getLight() > control.getBlackLight()){
-				control.forward();
+			if (control.getLight() <= control.treshold() - 10) {
+				// control.turnRight();
+				control.steerRun(2);
+			} else if (control.getLight() >= control.treshold() + 10) {
+				// control.turnLeft();
+				control.steerRun(1);
+			} else if (control.getLight() < control.treshold() + 10
+					&& control.getLight() > control.treshold() - 10) {
+				// control.forward();
+				control.steerRun(3);
 			}
 			if (Button.ESCAPE.isPressed()) {
-				control.shutdown();
+				// control.fullstop();
+				control.steerRun(4);
+				LCD.clear();
+				Run(5);
+			}
+
 		}
-		
-		}
+
 	}
-	public void Configure(){
-		while(!control.getStop()){
-			
+
+	// loppu tila pilotti
+	public void Final() {
+		control.Printstring("Aikasi: ", 0, 0);
+		control.Printint(control.endTime(), 10, 0);
+		while (true) {
+			control.Printstring("Paina esc lopettaaksesi", 0, 1);
+			if (Button.ESCAPE.isPressed()) {
+				control.shutdown();
+			}
 		}
 	}
 

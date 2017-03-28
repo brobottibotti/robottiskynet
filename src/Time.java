@@ -15,15 +15,23 @@ public class Time implements Runnable {
 	// vaihda print olioon
 	// vaihda pilot luokkaan
 	public void timer() {
-		control.Printstring("Aika: ", 0, 6);
-		control.Printint(stopwatch.elapsed() / 1000, 0, 7);
+	}
+
+	public int getTime() {
+		return stopwatch.elapsed() / 1000;
+	}
+
+	public int endTime() {
+		final int endtime = this.getTime();
+		return endtime;
+
 	}
 
 	// timer säie, joka tulostaa aikaa.
 	public void run() {
-		while (!control.getStop()) {
-			timer();
-		}
+		// while (!control.getStop()) {
+
+		// }
 	}
 
 }

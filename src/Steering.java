@@ -11,8 +11,33 @@ public class Steering {
 		this.control = c;
 	}
 
+	// Testi steering switchcase
+	public void Run(int type) {
+		switch (type) {
+		case 1:
+			turnLeft();
+			break;
+
+		case 2:
+			turnRight();
+			break;
+
+		case 3:
+			forward();
+			break;
+		case 4:
+			fullstop();
+			break;
+
+		case 5:
+			// dodge();
+			break;
+		}
+
+	}
+
 	// oikealle k‰‰ntymis metodi
-	public void turnRight() {
+	public void turnLeft() {
 		Motor.C.setSpeed((float) (maxspeed * 0.4));
 		Motor.A.setSpeed((float) (maxspeed));
 		Motor.C.forward();
@@ -20,7 +45,7 @@ public class Steering {
 	}
 
 	// vasemmalle k‰‰ntymis metodi
-	public void turnLeft() {
+	public void turnRight() {
 		Motor.C.setSpeed((float) (maxspeed));
 		Motor.A.setSpeed((float) (maxspeed * 0.4));
 		Motor.C.forward();
@@ -42,6 +67,12 @@ public class Steering {
 
 		Motor.C.backward();
 		Motor.A.backward();
+	}
+
+	public void fullstop() {
+		Motor.C.setSpeed(maxspeed * 0);
+		Motor.A.setSpeed(maxspeed * 0);
+
 	}
 
 }
