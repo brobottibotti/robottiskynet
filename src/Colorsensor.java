@@ -31,7 +31,7 @@ public class Colorsensor implements Runnable {
 
 	public void setBlackLight() {
 		colorsensor.setFloodlight(true);
-		blacklight = colorsensor.getLightValue() + 10;
+		blacklight = colorsensor.getLightValue();
 	}
 
 	// Palauttaa blacklight arvon

@@ -15,8 +15,8 @@ public class Time implements Runnable {
 	// vaihda print olioon
 	// vaihda pilot luokkaan
 	public void timer() {
-		control.Printstring("Aika: ", 0, 0);
-		control.Printint(stopwatch.elapsed() / 1000, 0, 1);
+		control.Printstring("Aika: ", 0, 6);
+		control.Printint(stopwatch.elapsed() / 1000, 0, 7);
 	}
 
 	// timer säie, joka tulostaa aikaa.

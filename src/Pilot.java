@@ -56,7 +56,7 @@ public class Pilot {
 			
 			// ultrasensorin arvot
 			int ultrasensoridata = control.sense(); 
-			control.Printint(ultrasensoridata, 0, 6);
+			control.Printint(ultrasensoridata, 0, 5);
 			if (Button.RIGHT.isPressed()) {
 				control.setBlackLight();
 				control.Printint(control.getBlackLight(), 0, 3);
@@ -74,14 +74,16 @@ public class Pilot {
 	public void Drive() {
 		while (!control.getStop()) {
 			// control.colorsensor.checkcolor();
-			control.Printint(control.getLight(), 0, 5);
+			control.Printint(control.getLight(), 0, 4);
 			int ultrasensoridata = control.sense();
-			control.Printint(ultrasensoridata, 0, 6);
+			control.Printint(ultrasensoridata, 0, 5);
 
-			if (control.getLight() <= control.getBlackLight()) {
+			if (control.getLight() <= control.getBlackLight()+5) {
 				control.turnRight();
-			} else {
+			} else if (control.getLight() >= control.getWhiteLight()) {
 				control.turnLeft();
+			}else if (control.getLight() < control.getWhiteLight() && control.getLight() > control.getBlackLight()){
+				control.forward();
 			}
 			if (Button.ESCAPE.isPressed()) {
 				control.shutdown();
