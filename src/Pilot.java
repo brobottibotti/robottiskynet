@@ -25,6 +25,9 @@ public class Pilot {
 			Drive();
 			break;
 		}
+		case 4:
+			Configure();
+			break;
 	}
 
 	// case Main menu, jossa on sensorien kalibrointi, ohjelman sammutus ja
@@ -34,6 +37,7 @@ public class Pilot {
 			control.Printstring("kalibrointi >", 0, 0);
 			control.Printstring("aja <", 0, 1);
 			control.Printstring("esc sammuta", 0, 2);
+			control.Printstring("enter konfigurointi", 0, 3);
 			if (Button.RIGHT.isPressed()) {
 				LCD.clear();
 				Run(2);
@@ -42,6 +46,8 @@ public class Pilot {
 				Run(3);
 			}else if (Button.ESCAPE.isPressed()){
 				control.shutdown();
+			}else if (Button.ENTER.isPressed()){
+				run(4);
 			}
 		}
 	}
@@ -89,6 +95,11 @@ public class Pilot {
 				control.shutdown();
 		}
 		
+		}
+	}
+	public void Configure(){
+		while(!control.getStop()){
+			
 		}
 	}
 
