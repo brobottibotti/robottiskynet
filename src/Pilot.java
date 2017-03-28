@@ -24,10 +24,11 @@ public class Pilot {
 		case 3:
 			Drive();
 			break;
-		}
+		
 		case 4:
 			Configure();
 			break;
+		}
 	}
 
 	// case Main menu, jossa on sensorien kalibrointi, ohjelman sammutus ja
@@ -47,7 +48,7 @@ public class Pilot {
 			}else if (Button.ESCAPE.isPressed()){
 				control.shutdown();
 			}else if (Button.ENTER.isPressed()){
-				run(4);
+				Run(4);
 			}
 		}
 	}
