@@ -14,7 +14,8 @@ public class Time implements Runnable {
 	// Ajan tulostus
 	// vaihda print olioon
 	// vaihda pilot luokkaan
-	public void timer() {
+	public Time(Control c) {
+		this.control = c;
 	}
 
 	public int getTime() {

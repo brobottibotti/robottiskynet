@@ -5,35 +5,36 @@ import lejos.nxt.SensorPort;
 
 public class Control {
 
-	Time time;
+	
 	Steering steering;
+	Time time;
 	Colorsensor colorsensor;
-	Printer printer;
 	Pilot pilot;
-	Ultrasensori ultrasensori;
+	Printer printer;
+	Ultrasensor ultrasensor;
+	Music music;
 	int pilotType;
+	public boolean stop = false;
 
-	public void setobjects(Time t, Steering s, Colorsensor v, Printer pr,
-			Pilot pi, Ultrasensori us) {
-		this.steering = s;
-		this.time = t;
-		this.colorsensor = v;
-		this.pilot = pi;
-		this.printer = pr;
-		this.ultrasensori = us;
-		// starting Pilot type
+	public Control() {
+		steering = new Steering(this);
+		time = new Time(this);
+		colorsensor = new Colorsensor(this);
+		pilot = new Pilot(this);
+		printer = new Printer(this);
+		ultrasensor = new Ultrasensor(this);
+		music = new Music(this);
 		this.pilotType = 1;
-
 	}
 
 	// Ohjelman sammutus metodi
 	public void shutdown() {
-		Robotti.setStop();
+		this.stop = !stop;
 	}
 
 	// Palauttaa pysäytys booleain arvon
 	public boolean getStop() {
-		return Robotti.stop;
+		return this.stop;
 	}
 
 	//
@@ -77,7 +78,7 @@ public class Control {
 	// Ultrasensor
 	//
 	public int sense() {
-		return ultrasensori.etaisyys();
+		return ultrasensor.etaisyys();
 	}
 
 	//
@@ -130,4 +131,16 @@ public class Control {
 		steering.fullstop();
 	}
 
+	//
+	// Music
+	//
+
+	public void endMusic() {
+		music.endMusic();
+
+	}
+
+	public void playMusic(int i) {
+		music.playMusic(i);
+	}
 }

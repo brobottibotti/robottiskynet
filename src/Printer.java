@@ -5,6 +5,11 @@ public class Printer {
 
 	Control control;
 
+	public Printer(Control c)
+	{
+		this.control = c;
+	}
+	
 	public void setobjects(Control c) {
 		this.control = c;
 	}

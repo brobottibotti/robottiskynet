@@ -12,6 +12,10 @@ public class Colorsensor implements Runnable {
 	public void setobjects(Control c) {
 		this.control = c;
 	}
+	public Colorsensor(Control c)
+	{
+		this.control = c;
+	}
 
 	// P‰ivitt‰‰ light attribuuttiin valosensorin arvon
 

@@ -3,11 +3,16 @@ import lejos.nxt.Motor;
 import lejos.nxt.SensorPort;
 import lejos.nxt.UltrasonicSensor;
 
-public class Ultrasensori {
+public class Ultrasensor {
 	Control control;
 	int etaisyys;
 	UltrasonicSensor ultra = new UltrasonicSensor(SensorPort.S4);
 
+	public Ultrasensor(Control c)
+	{
+		this.control = c;
+	}
+	
 	public void setobjects(Control c) {
 		this.control = c;
 	}
