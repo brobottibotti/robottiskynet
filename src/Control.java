@@ -13,6 +13,7 @@ public class Control {
 	Printer printer;
 	Ultrasensor ultrasensor;
 	Music music;
+	USBReceiver usbreceiver;
 	int pilotType;
 	public boolean stop = false;
 
@@ -24,6 +25,7 @@ public class Control {
 		printer = new Printer(this);
 		ultrasensor = new Ultrasensor(this);
 		music = new Music(this);
+		usbreceiver = new USBReceiver(this);
 		this.pilotType = 1;
 	}
 
@@ -36,7 +38,17 @@ public class Control {
 	public boolean getStop() {
 		return this.stop;
 	}
-
+	//
+	//USBReceive
+	//
+	
+	public void Receive(){
+		usbreceiver.receive();
+	}
+	public float getSpeed(){
+		return usbreceiver.getSpeed();
+	}
+	
 	//
 	// Pilot
 	//

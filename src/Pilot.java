@@ -50,6 +50,7 @@ public class Pilot {
 		control.Printstring("kalibrointi >", 0, 0);
 		control.Printstring("konfigurointi <", 0, 1);
 		control.Printstring("enter aja", 0, 2);
+		control.Printint((int)control.getSpeed(), 0, 3);
 		if (Button.RIGHT.isPressed()) {
 			LCD.clear();
 			

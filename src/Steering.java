@@ -42,9 +42,9 @@ public class Steering {
 
 	// oikealle k‰‰ntymis metodi
 	public void turnLeft() {
-		
-		Motor.C.setSpeed((float) (maxspeed * 0.3));
-		Motor.A.setSpeed((float) (maxspeed));
+
+		Motor.C.setSpeed((float)(control.getSpeed() * 0.3));
+		Motor.A.setSpeed((control.getSpeed()));
 		Motor.C.forward();
 		Motor.A.forward();
 		
@@ -54,16 +54,16 @@ public class Steering {
 	// vasemmalle k‰‰ntymis metodi
 	public void turnRight() {
 		
-		Motor.C.setSpeed((float) (maxspeed));
-		Motor.A.setSpeed((float) (maxspeed * 0.3));
+		Motor.C.setSpeed((control.getSpeed()));
+		Motor.A.setSpeed((float)(control.getSpeed() * 0.3));
 		Motor.C.forward();
 		Motor.A.forward();
 	}
 
 	// eteenp‰in liikkumis metodi
 	public void forward() {
-		Motor.C.setSpeed((float) (maxspeed));
-		Motor.A.setSpeed((float) (maxspeed ));
+		Motor.C.setSpeed((control.getSpeed()));
+		Motor.A.setSpeed((control.getSpeed() ));
 		Motor.C.forward();
 		Motor.A.forward();
 		
@@ -72,16 +72,16 @@ public class Steering {
 	// taaksepp‰in liikkumis metodi
 	public void backward() {
 		 
-		Motor.C.setSpeed((float) (maxspeed));
-		Motor.A.setSpeed((float) (maxspeed));
+		Motor.C.setSpeed((control.getSpeed()));
+		Motor.A.setSpeed((control.getSpeed()));
 
 		Motor.C.backward();
 		Motor.A.backward();
 	}
 
 	public void fullstop() {
-		Motor.C.setSpeed(maxspeed * 0);
-		Motor.A.setSpeed(maxspeed * 0);
+		Motor.C.setSpeed(0);
+		Motor.A.setSpeed(0);
 
 	}
 
