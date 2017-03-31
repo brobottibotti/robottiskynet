@@ -8,7 +8,7 @@ import lejos.nxt.comm.USBConnection;
 
 public class USBReceiver {
 
-	float speed;
+	int speed;
 	Control control;
 
 	public USBReceiver(Control c) {
@@ -21,7 +21,7 @@ public class USBReceiver {
 		DataOutputStream dOut = conn.openDataOutputStream();
 		DataInputStream dIn = conn.openDataInputStream();
 		try {
-			speed = dIn.readFloat();
+			speed = dIn.readInt();
 			
 		} catch (IOException e2) {
 			// TODO Auto-generated catch block
@@ -42,9 +42,10 @@ public class USBReceiver {
 			e.printStackTrace();
 		}
 		conn.close();
+		LCD.clear();
 
 	}
-	public float getSpeed(){
+	public int getSpeed(){
 		return speed;
 	}
 }

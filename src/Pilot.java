@@ -6,7 +6,9 @@ import lejos.nxt.Sound;
 
 public class Pilot {
 	
-
+	int menunumber;
+	boolean rightdown = true;
+	boolean leftdown = true;
 	Control control;
 	public void setobjects(Control c) {
 		this.control = c;
@@ -20,12 +22,17 @@ public class Pilot {
 	public void Run(int type) {
 
 		switch (type) {
-		case 1:
+		case 0:
 			Valikko();
 			break;
 
-		case 2:
+		case 1:
 			Calibrate();
+			break;
+
+		case 2:
+			Configure();
+			
 			break;
 
 		case 3:
@@ -33,10 +40,6 @@ public class Pilot {
 			break;
 
 		case 4:
-			Configure();
-			break;
-
-		case 5:
 			Final();
 			break;
 		}
@@ -46,24 +49,34 @@ public class Pilot {
 	// robotin ajoon siirtymis vaihtoehdot.
 	public void Valikko() {
 		
+		control.Printstring("0 menu", 0, 0);
+		control.Printstring("1 kalibrointi", 0, 1);
+		control.Printstring("2 konfigurointi", 0, 2);
+		control.Printstring("3 aja", 0, 3);
+		control.Printstring("4 final", 0, 4);
+		control.Printint(menunumber, 0, 6);
 		
-		control.Printstring("kalibrointi >", 0, 0);
-		control.Printstring("konfigurointi <", 0, 1);
-		control.Printstring("enter aja", 0, 2);
-		control.Printint((int)control.getSpeed(), 0, 3);
-		if (Button.RIGHT.isPressed()) {
-			LCD.clear();
-			
-			
-			control.setPilot(2);
-		} else if (Button.LEFT.isPressed()) {
-			
-			LCD.clear();
-			control.setPilot(5);
-		} else if (Button.ENTER.isPressed()) {
+		control.Printint(control.getSpeed(), 0, 5);
+		Button.readButtons();
+		if(Button.readButtons()==Button.ID_RIGHT){
+			if (rightdown){
+			menunumber++;
+			}
+			rightdown = false;
+		
+		}else if (Button.readButtons()==Button.ID_LEFT){
+			if (leftdown){
+				menunumber--;
+				}
+				leftdown = false;
+		}else if (Button.readButtons()==Button.ID_ENTER) {
 			LCD.clear();
 			control.time.stopwatch.reset();
-			control.setPilot(3);
+			control.setPilot(menunumber);
+		}
+		else {
+			rightdown = true;
+			leftdown = true;
 		}
 	}
 
@@ -86,7 +99,7 @@ public class Pilot {
 			control.Printint(control.getWhiteLight(), 0, 4);
 		} else if (Button.ESCAPE.isPressed()) {
 			LCD.clear();
-			control.setPilot(1);
+			control.setPilot(0);
 		}
 	}
 
@@ -103,6 +116,7 @@ public class Pilot {
 		control.Printstring("Aika: ", 0, 0);
 		control.Printint(control.getTime(), 7, 0);
 		control.Printint(control.getLight(), 0, 4);
+		control.Printint(control.ultrasensor.ultra.capture(), 0, 4);
 		int ultrasensoridata = control.sense();
 		control.Printint(ultrasensoridata, 0, 5);
 
@@ -123,7 +137,7 @@ public class Pilot {
 			// control.fullstop();
 			control.steerRun(4);
 			LCD.clear();
-			control.setPilot(5);
+			control.setPilot(4);
 		}
 
 	}

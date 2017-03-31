@@ -26,7 +26,7 @@ public class Control {
 		ultrasensor = new Ultrasensor(this);
 		music = new Music(this);
 		usbreceiver = new USBReceiver(this);
-		this.pilotType = 1;
+		this.pilotType = 0;
 	}
 
 	// Ohjelman sammutus metodi
@@ -45,7 +45,7 @@ public class Control {
 	public void Receive(){
 		usbreceiver.receive();
 	}
-	public float getSpeed(){
+	public int getSpeed(){
 		return usbreceiver.getSpeed();
 	}
 	

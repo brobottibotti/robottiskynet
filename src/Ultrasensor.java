@@ -15,14 +15,18 @@ public class Ultrasensor {
 	
 	public void setobjects(Control c) {
 		this.control = c;
+		
 	}
 
 	// etäisyyden asetus ja palautus metodi
 	public int etaisyys() {
 		etaisyys = ultra.getDistance();
 		return etaisyys;
+		
+		
 		// LCD.clear();
 		// LCD.drawString("Distance: " + etaisyys, 0, 3);
 	}
+
 
 }
