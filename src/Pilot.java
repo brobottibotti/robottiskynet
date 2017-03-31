@@ -44,6 +44,10 @@ public class Pilot {
 		case 6:
 			Dodge();
 			break;
+			
+		case 7:
+			Drive();
+			break;
 		}
 	}
 
@@ -141,7 +145,6 @@ public class Pilot {
 	}
 	
 	public void testDrive(){
-
 		int ultrasensoridata = control.sense();
 		control.Printint(ultrasensoridata, 0, 5);
 //		boolean isblocked = control.getIsBlocked();
@@ -152,16 +155,17 @@ public class Pilot {
 		if (!control.getIsBlocked()){
 			control.forward();
 		}else{
-		control.setPilot(6);
-		
+			//control.playMusic(1);
+			control.setPilot(6);
 		}
 	}
 	
 	public void Dodge(){
-		control.Printcl("tere");
-		control.fullstop();
-		control.rotateRight(60);
-		control.Printstring("jeba", 0, 7);
-		//control.forward();
+		control.playMusic(1);
+		control.dodgeManeuver();
+		if (control.getLight() <= control.treshold()) {
+			// control.turnRight();
+			control.setPilot(3);
+		}	
 		}
 	}

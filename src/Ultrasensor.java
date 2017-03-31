@@ -36,6 +36,7 @@ public class Ultrasensor implements Runnable{
 	
 	public void run(){
 		while(!control.getStop()){
+		ultra.continuous();
 		updatesensor();
 		//getIsBlocked();
 		}

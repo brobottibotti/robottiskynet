@@ -146,6 +146,10 @@ public class Control {
 	public void rotateLeft(int angle){
 		steering.rotateLeft(angle);		
 	}
+	
+	public void dodgeManeuver(){
+		steering.dodgeManeuver();
+	}
 
 	//
 	// Music

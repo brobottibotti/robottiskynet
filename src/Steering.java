@@ -1,5 +1,6 @@
 import lejos.nxt.LCD;
 import lejos.nxt.Motor;
+import lejos.robotics.navigation.DifferentialPilot;
 
 public class Steering {
 
@@ -7,6 +8,7 @@ public class Steering {
 	boolean direction;
 	float maxspeed = 300;
 	float dodgespeed = 100;
+	DifferentialPilot diffpilot = new DifferentialPilot(2.2f, 4.7f, Motor.A, Motor.C);
 
 	/*public void setobjects(Control c) {
 		this.control = c;
@@ -101,5 +103,15 @@ public class Steering {
 		Motor.C.rotate(-angle, true);
 		Motor.A.rotate(angle, true);
 	}
-
+	
+	public void dodgeManeuver(){
+		if (control.sense() < 255){
+		diffpilot.setRotateSpeed(100);
+		diffpilot.rotate(50);
+		diffpilot.setTravelSpeed(5);
+		diffpilot.travel(8);
+		diffpilot.rotate(-100);	
+		
+		}
+	}
 }
