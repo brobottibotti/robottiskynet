@@ -26,6 +26,7 @@ public class Colorsensor implements Runnable {
 	// Palauttaa lightvalue attribuutin arvon
 
 	public int getLight() {
+		//return colorsensor.getLightValue();
 		return lightvalue;
 	}
 

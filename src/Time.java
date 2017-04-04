@@ -7,10 +7,6 @@ public class Time implements Runnable {
 	Control control;
 	Stopwatch stopwatch = new Stopwatch();
 
-	public void setobjects(Control c) {
-		this.control = c;
-	}
-
 	// Ajan tulostus
 	// vaihda print olioon
 	// vaihda pilot luokkaan

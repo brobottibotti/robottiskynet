@@ -90,8 +90,14 @@ public class Control {
 	// Ultrasensor
 	//
 	public int sense() {
-		return ultrasensor.etaisyys();
+		return ultrasensor.getEtaisyys();
 	}
+	
+	public boolean getIsBlocked(){
+		return ultrasensor.getIsBlocked();
+	}
+	
+
 
 	//
 	// Colorsensor
@@ -123,6 +129,11 @@ public class Control {
 	//
 	// Steering
 	//
+	public void diffRotate(int i)
+	{
+		steering.diffRotate(i);
+	}
+	
 	public void steerRun(int i) {
 		steering.Run(i);
 	}
@@ -142,15 +153,28 @@ public class Control {
 	public void fullstop() {
 		steering.fullstop();
 	}
+	
+	public void rotateRight(int angle){
+		steering.rotateRight(angle);		
+	}
+	
+	public void rotateLeft(int angle){
+		steering.rotateLeft(angle);		
+	}
+	
+	public void dodgeManeuver(){
+		steering.dodgeManeuver();
+	}
+	
+	public void lineSeeker(){
+		steering.lineSeeker();
+	}
+
 
 	//
 	// Music
 	//
 
-	public void endMusic() {
-		music.endMusic();
-
-	}
 
 	public void playMusic(int i) {
 		music.playMusic(i);

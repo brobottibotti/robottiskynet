@@ -3,7 +3,7 @@ import lejos.nxt.Motor;
 import lejos.nxt.SensorPort;
 import lejos.nxt.UltrasonicSensor;
 
-public class Ultrasensor {
+public class Ultrasensor implements Runnable {
 	Control control;
 	int etaisyys;
 	UltrasonicSensor ultra = new UltrasonicSensor(SensorPort.S4);
@@ -17,16 +17,33 @@ public class Ultrasensor {
 		this.control = c;
 		
 	}
+	public void updatesensor(){
+		etaisyys = ultra.getDistance();
+	}
 
 	// etäisyyden asetus ja palautus metodi
-	public int etaisyys() {
-		etaisyys = ultra.getDistance();
+	public int getEtaisyys() {
 		return etaisyys;
-		
-		
-		// LCD.clear();
-		// LCD.drawString("Distance: " + etaisyys, 0, 3);
 	}
+
+	public boolean getIsBlocked(){
+		if (ultra.getDistance() <= 20){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
+	
+	public void run(){
+		while(!control.getStop()){
+		//ultra.continuous(); //shouldn't matter, default mode
+		updatesensor();
+		//getIsBlocked();
+		}
+	}
+
+
 
 
 }

@@ -19,13 +19,11 @@ public class Robotti {
 		Thread timer = new Thread(control.time);
 		Thread color = new Thread(control.colorsensor);
 		control.Receive();
-		
-		
-        
-        
+		Thread ultra = new Thread(control.ultrasensor);
         
 		timer.start();
 		color.start();
+		ultra.start();
 		// p‰‰looppi
 		while (!control.getStop()) {
 			control.Pilot();

@@ -2,6 +2,7 @@ import java.io.File;
 
 import lejos.nxt.Button;
 import lejos.nxt.LCD;
+import lejos.nxt.Motor;
 import lejos.nxt.Sound;
 
 public class Pilot {
@@ -31,15 +32,18 @@ public class Pilot {
 			break;
 
 		case 2:
-			Configure();
-			
-			break;
-
-		case 3:
 			Drive();
 			break;
-
+			
+		case 3: 
+			Dodge();
+			break;
+			
 		case 4:
+			Lineseeker();
+			break;
+
+		case 5:
 			Final();
 			break;
 		}
@@ -51,9 +55,8 @@ public class Pilot {
 		
 		control.Printstring("0 menu", 0, 0);
 		control.Printstring("1 kalibrointi", 0, 1);
-		control.Printstring("2 konfigurointi", 0, 2);
-		control.Printstring("3 aja", 0, 3);
-		control.Printstring("4 final", 0, 4);
+		control.Printstring("2 aja", 0, 2);
+		control.Printstring("3 final", 0, 3);
 		control.Printint(menunumber, 0, 6);
 		
 		control.Printint(control.getSpeed(), 0, 5);
@@ -83,14 +86,11 @@ public class Pilot {
 	// case värisensorin kalibrointi. Tämän casen aikana haetaan käytettävän
 	// viivan maksimi musta arvo, jotta ohjelma tietää koska se kääntyy.
 	public void Calibrate() {
-		control.playMusic(2);
+		
 		control.Printstring("black >", 0, 0);
 		control.Printstring("white <", 0, 1);
 		control.Printstring("esc menu", 0, 2);
-		
 		// ultrasensorin arvot
-		int ultrasensoridata = control.sense();
-		control.Printint(ultrasensoridata, 0, 5);
 		if (Button.RIGHT.isPressed()) {
 			control.setBlackLight();
 			control.Printint(control.getBlackLight(), 0, 3);
@@ -99,27 +99,22 @@ public class Pilot {
 			control.Printint(control.getWhiteLight(), 0, 4);
 		} else if (Button.ESCAPE.isPressed()) {
 			LCD.clear();
+			control.playMusic(3);
 			control.setPilot(0);
-		}
-	}
-
-	// tiedonsiirto pilotti
-	public void Configure() {
-		while (!control.getStop()) {
-
 		}
 	}
 
 	// case Ajo-tila. Tässä casessa robotti pyrkii seuraamaan mustaa viivaa.
 	public void Drive() {
-		control.playMusic(3);
+		control.playMusic(2);
 		control.Printstring("Aika: ", 0, 0);
 		control.Printint(control.getTime(), 7, 0);
 		control.Printint(control.getLight(), 0, 4);
-		control.Printint(control.ultrasensor.ultra.capture(), 0, 4);
-		int ultrasensoridata = control.sense();
-		control.Printint(ultrasensoridata, 0, 5);
-
+		control.Printint(control.sense(), 0, 6);
+		
+		
+		//Kommenttiåaksaa
+		if (!control.getIsBlocked()){
 		if (control.getLight() <= control.treshold() - 10) {
 			// control.turnRight();
 			
@@ -133,20 +128,49 @@ public class Pilot {
 			// control.forward();
 			control.steerRun(3);
 		}
-		if (Button.ESCAPE.isPressed()) {
+		/*if (Button.ESCAPE.isPressed()) {
 			// control.fullstop();
 			control.steerRun(4);
 			LCD.clear();
-			control.setPilot(4);
-		}
+			control.setPilot(5);
+			control.Printint(control.endTime(), 10, 0);
+		}*/
+		}else{
+			control.setPilot(3);
+			}
 
 	}
+	
+	public void Dodge(){
+		control.playMusic(1);
+		control.dodgeManeuver();
+		
+//		if (control.getLight() <= control.treshold()) {
+//			// control.turnRight();
+//			control.setPilot(7);
+		//}	
+		}
+
+	
+	
+	public void Lineseeker(){
+		control.forward();
+		control.Printint(control.getLight(), 0, 3);
+		if (control.getLight() <= control.treshold()){
+			control.fullstop();
+			control.diffRotate(20);
+			control.setPilot(2);
+		} 
+
+		
+	}
+	
+	
 
 	// loppu tila pilotti
 	public void Final() {
 		control.playMusic(4);
 		control.Printstring("Aikasi: ", 0, 0);
-		control.Printint(control.endTime(), 10, 0);
 		control.Printstring("Paina esc lopettaaksesi", 0, 1);
 		
 
