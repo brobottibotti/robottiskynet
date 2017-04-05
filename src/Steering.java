@@ -111,7 +111,7 @@ public class Steering {
 		diffpilot.rotate(50);
 		diffpilot.setTravelSpeed(5);
 		diffpilot.travel(10);
-		diffpilot.rotate(-100);	
+		diffpilot.rotate(-90);	
 		control.setPilot(4);
 		}
 	}
