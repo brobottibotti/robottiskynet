@@ -8,60 +8,81 @@ public class Colorsensor implements Runnable {
 	private int whitelight = 45;
 	private int lightvalue;
 
-	public void setobjects(Control c) {
-		this.control = c;
-	}
-
+	/**
+	 * M‰‰ritt‰‰ hallintaolion viitteen
+	 * 
+	 * @param c
+	 *            control olion viite
+	 */
 	public Colorsensor(Control c) {
 		this.control = c;
 	}
 
-	// P‰ivitt‰‰ light attribuuttiin valosensorin arvon
-
+	/**
+	 * P‰ivitt‰‰ light attribuuttiin valosensorin arvon
+	 */
 	private void updatecolor() {
 		lightvalue = colorsensor.getLightValue();
 	}
 
-	// Palauttaa lightvalue attribuutin arvon
+	/**
+	 * @return Palauttaa lightvalue attribuutin arvon
+	 */
 
 	public int getLight() {
-		// return colorsensor.getLightValue();
 		return lightvalue;
 	}
 
-	// asettaa blacklight arvon
-
+	/**
+	 * asettaa blacklight arvon
+	 */
 	public void setBlackLight() {
 		colorsensor.setFloodlight(true);
 		blacklight = colorsensor.getLightValue();
 	}
 
-	// Palauttaa blacklight arvon
-
+	/**
+	 * palauttaa blacklight arvon
+	 * 
+	 * @return
+	 */
 	public int getBlackLight() {
 		return blacklight;
 	}
 
-	// Asetetaan whitelight arvon
-
+	/**
+	 * Asettaa whitelight arvon
+	 */
 	public void setWhiteLight() {
 		colorsensor.setFloodlight(true);
 		whitelight = colorsensor.getLightValue();
 	}
 
-	// Palauttaa WhiteLight arvon
-
+	/**
+	 * palauttaa whitelight arvon
+	 * 
+	 * @return
+	 */
 	public int getWhiteLight() {
 		return whitelight;
 	}
 
+	/**
+	 * Laskee valoarvojen keskiarvon
+	 * 
+	 * @return Palauttaa keskiarvon
+	 */
 	public int treshold() {
 		return (whitelight + blacklight) / 2;
 	}
 
-	// Colorsensor s‰ie jolla p‰ivitet‰‰n Lightvalue attribuuttia kutsumalla
-	// metodia.
-
+	/**
+	 * Colorsensor s‰ie jolla p‰ivitet‰‰n Lightvalue attribuuttia kutsumalla
+	 * metodia
+	 * 
+	 * @see <a
+	 *      href="https://docs.oracle.com/javase/7/docs/api/java/lang/Thread.html#run()">java.lang.Runnable#run()</a>
+	 */
 	public void run() {
 		while (!control.getStop()) {
 			updatecolor();

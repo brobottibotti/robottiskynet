@@ -16,12 +16,25 @@ public class Music {
 	private boolean bfu = false;
 
 	Control control;
-	Boolean isPlaying;
 
+	/**
+	 * M‰‰ritt‰‰ hallintaolion viitteen
+	 * 
+	 * @param c
+	 *            control olion viite
+	 */
 	public Music(Control c) {
 		this.control = c;
 	}
 
+	/**
+	 * Switch case musiikin vaihtamiselle
+	 * 
+	 * @param i
+	 *            interget muuttuja joka m‰‰ritt‰‰ soitettavan ‰‰nen.
+	 * @see <a
+	 *      href="http://www.lejos.org/p_technologies/nxt/nxj/api/lejos/nxt/Sound.html">lejos.nxt.Sound</a>
+	 */
 	public void playMusic(int i) {
 		switch (i) {
 		case 1:

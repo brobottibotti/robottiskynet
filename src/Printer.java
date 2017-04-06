@@ -4,27 +4,44 @@ public class Printer {
 
 	Control control;
 
+	/**
+	 * M‰‰ritt‰‰ hallintaolion viitteen
+	 * 
+	 * @param c
+	 *            control olion viite
+	 */
 	public Printer(Control c) {
 		this.control = c;
 	}
 
-	public void setobjects(Control c) {
-		this.control = c;
-	}
-
-	// tekstin tulostus metodi
-	// lis‰‰ koordinaatit
+	/**
+	 * Tekstin tulostus metodi
+	 * 
+	 * @param a
+	 *            Tulostettava teksti
+	 * @param x
+	 *            LCD:n X koordinaatti
+	 * @param y
+	 *            LCD:n Y koordinaatti
+	 * @see <a
+	 *      href="http://www.lejos.org/p_technologies/nxt/nxj/api/lejos/nxt/LCD.html">lejos.nxt.LCD</a>
+	 */
 	public void printstring(String a, int x, int y) {
 		LCD.drawString(a, x, y);
 	}
 
-	// n‰ytˆn tyhjennys metodi
-	public void clprint(String a) {
-		LCD.clear();
-		LCD.drawString(a, 0, 0);
-	}
-
-	// Integer arvojen tulostamiseen k‰ytett‰v‰ metodi
+	/**
+	 * Numeroiden tulostus metodi
+	 * 
+	 * @param a
+	 *            Tulostettava int arvo
+	 * @param x
+	 *            LCD:n X koordinaatti
+	 * @param y
+	 *            LCD:n Y koordinaatti
+	 * @see <a
+	 *      href="http://www.lejos.org/p_technologies/nxt/nxj/api/lejos/nxt/LCD.html">lejos.nxt.LCD</a>
+	 */
 	public void printint(int a, int x, int y) {
 
 		LCD.drawInt(a, x, y);
