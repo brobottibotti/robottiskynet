@@ -11,8 +11,8 @@ public class Colorsensor implements Runnable {
 	public void setobjects(Control c) {
 		this.control = c;
 	}
-	public Colorsensor(Control c)
-	{
+
+	public Colorsensor(Control c) {
 		this.control = c;
 	}
 
@@ -25,11 +25,11 @@ public class Colorsensor implements Runnable {
 	// Palauttaa lightvalue attribuutin arvon
 
 	public int getLight() {
-		//return colorsensor.getLightValue();
+		// return colorsensor.getLightValue();
 		return lightvalue;
 	}
 
-	// Kalibroinnin aikainen blacklight arvon asetus
+	// asettaa blacklight arvon
 
 	public void setBlackLight() {
 		colorsensor.setFloodlight(true);
@@ -42,7 +42,7 @@ public class Colorsensor implements Runnable {
 		return blacklight;
 	}
 
-	// Mahdollinen valkoisen arvon maksimiarvo
+	// Asetetaan whitelight arvon
 
 	public void setWhiteLight() {
 		colorsensor.setFloodlight(true);
@@ -63,8 +63,6 @@ public class Colorsensor implements Runnable {
 	// metodia.
 
 	public void run() {
-
-		// vaihda stoppi controllin kautta jossain vaiheessa
 		while (!control.getStop()) {
 			updatecolor();
 		}

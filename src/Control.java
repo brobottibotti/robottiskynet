@@ -1,11 +1,5 @@
-import lejos.nxt.ColorSensor;
-import lejos.nxt.LCD;
-import lejos.nxt.Motor;
-import lejos.nxt.SensorPort;
-
 public class Control {
 
-	
 	Steering steering;
 	Time time;
 	Colorsensor colorsensor;
@@ -38,17 +32,19 @@ public class Control {
 	public boolean getStop() {
 		return this.stop;
 	}
+
 	//
-	//USBReceive
+	// USBReceive
 	//
-	
-	public void Receive(){
+
+	public void Receive() {
 		usbreceiver.receive();
 	}
-	public int getSpeed(){
+
+	public int getSpeed() {
 		return usbreceiver.getSpeed();
 	}
-	
+
 	//
 	// Pilot
 	//
@@ -92,12 +88,10 @@ public class Control {
 	public int sense() {
 		return ultrasensor.getEtaisyys();
 	}
-	
-	public boolean getIsBlocked(){
+
+	public boolean getIsBlocked() {
 		return ultrasensor.getIsBlocked();
 	}
-	
-
 
 	//
 	// Colorsensor
@@ -125,17 +119,11 @@ public class Control {
 	public int treshold() {
 		return colorsensor.treshold();
 	}
-
 	//
 	// Steering
 	//
-	public void diffRotate(int i)
-	{
+	public void diffRotate(int i) {
 		steering.diffRotate(i);
-	}
-	
-	public void steerRun(int i) {
-		steering.Run(i);
 	}
 
 	public void turnRight() {
@@ -153,28 +141,14 @@ public class Control {
 	public void fullstop() {
 		steering.fullstop();
 	}
-	
-	public void rotateRight(int angle){
-		steering.rotateRight(angle);		
-	}
-	
-	public void rotateLeft(int angle){
-		steering.rotateLeft(angle);		
-	}
-	
-	public void dodgeManeuver(){
+
+	public void dodgeManeuver() {
 		steering.dodgeManeuver();
 	}
-	
-	public void lineSeeker(){
-		steering.lineSeeker();
-	}
-
 
 	//
 	// Music
 	//
-
 
 	public void playMusic(int i) {
 		music.playMusic(i);

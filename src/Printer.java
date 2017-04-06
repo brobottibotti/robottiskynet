@@ -1,15 +1,13 @@
-import lejos.nxt.Button;
 import lejos.nxt.LCD;
 
 public class Printer {
 
 	Control control;
 
-	public Printer(Control c)
-	{
+	public Printer(Control c) {
 		this.control = c;
 	}
-	
+
 	public void setobjects(Control c) {
 		this.control = c;
 	}

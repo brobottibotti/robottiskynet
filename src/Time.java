@@ -1,15 +1,12 @@
-import lejos.nxt.Button;
-import lejos.nxt.LCD;
 import lejos.util.Stopwatch;
 
-public class Time implements Runnable {
+public class Time{
 
+	private int endtime;
 	Control control;
 	Stopwatch stopwatch = new Stopwatch();
 
 	// Ajan tulostus
-	// vaihda print olioon
-	// vaihda pilot luokkaan
 	public Time(Control c) {
 		this.control = c;
 	}
@@ -19,16 +16,9 @@ public class Time implements Runnable {
 	}
 
 	public int endTime() {
-		final int endtime = this.getTime();
+		endtime = this.getTime();
 		return endtime;
-
 	}
-
-	// timer säie, joka tulostaa aikaa.
-	public void run() {
-		// while (!control.getStop()) {
-
-		// }
-	}
+	
 
 }

@@ -7,23 +7,22 @@ import lejos.nxt.comm.USB;
 import lejos.nxt.comm.USBConnection;
 
 public class USBReceiver {
-	//nopeus, jota k‰ytet‰‰n muissa luokissa
+	// nopeus, jota k‰ytet‰‰n muissa luokissa
 	int speed;
 	Control control;
-	
 	
 	public USBReceiver(Control c) {
 		this.control = c;
 	}
-	
+
 	public void receive() {
-		//robotti odottaa yhteytt‰
-		control.Printstring("waiting", 0, 0);
+		// robotti odottaa yhteytt‰
+		control.Printstring("odottaa usb...", 0, 0);
 		USBConnection conn = USB.waitForConnection();
-		//Avataan yhteydet
+		// Avataan yhteydet
 		DataOutputStream dOut = conn.openDataOutputStream();
 		DataInputStream dIn = conn.openDataInputStream();
-		//luetaan konnelta saatu tieto ja l‰hetet‰‰n se takaisin
+		// luetaan konnelta saatu tieto ja l‰hetet‰‰n se takaisin
 		try {
 			speed = dIn.readInt();
 			dOut.writeInt(speed);
@@ -31,7 +30,7 @@ public class USBReceiver {
 			// TODO Auto-generated catch block
 			e2.printStackTrace();
 		}
-		//Suljetaan yhteydet
+		// Suljetaan yhteydet
 		try {
 			dOut.close();
 			dIn.close();
@@ -43,8 +42,9 @@ public class USBReceiver {
 		LCD.clear();
 
 	}
-	//palauttaa speed
-	public int getSpeed(){
+
+	// palauttaa speed
+	public int getSpeed() {
 		return speed;
 	}
 }
