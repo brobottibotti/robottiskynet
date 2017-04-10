@@ -11,7 +11,7 @@ public class Pilot {
 	private boolean rightdown = true;
 	private boolean leftdown = true;
 	private int Dodges = 0;
-	private int obstacles = 2;
+	private int obstacles = 1;
 	Control control;
 
 	/**
@@ -34,7 +34,7 @@ public class Pilot {
 
 		switch (type) {
 		case 0:
-			Valikko();
+			Menu();
 			break;
 
 		case 1:
@@ -62,7 +62,7 @@ public class Pilot {
 	/**
 	 * Valikko pilotti, jonka avulla ohjelmasta voidaan kutsua eri pilotteja.
 	 */
-	private void Valikko() {
+	private void Menu() {
 		control.playMusic(3);
 		control.Printstring("0 menu", 0, 0);
 		control.Printstring("1 kalibrointi", 0, 1);

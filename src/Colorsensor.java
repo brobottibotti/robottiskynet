@@ -4,8 +4,8 @@ import lejos.nxt.SensorPort;
 public class Colorsensor implements Runnable {
 	ColorSensor colorsensor = new ColorSensor(SensorPort.S1);
 	Control control;
-	private int blacklight = 15;
-	private int whitelight = 45;
+	private int blacklight = 20;
+	private int whitelight = 50;
 	private int lightvalue;
 
 	/**
